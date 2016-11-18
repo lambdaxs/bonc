@@ -55,6 +55,7 @@ NSDictnary *params1 = @{@"name":@"xiaos"}
 coder们提出了Promise的解决方案.           
 Promise的翻译过来就是承诺.每次异步操作都会有一个结果和一个错误.Promise保证我们能得到想要的结果,也能处理发生的错误.
 
+##then catch
 * 一个简单的promise
 
 ```oc
@@ -235,7 +236,7 @@ UIApplication.shared.isNetworkActivityIndicatorVisible = true
 firstly {
     when(imagePicker.promise(),URLSession.dataTask(with: "http://getLoctionInfo"))
 }.then { imageData,locationInfo  -> Void in
-    let url = "http://postImageAndLocation\(locationInfo.distance)"
+    let url = "http://postImageAndLocation/\(locationInfo.distance)"
     return URLSession.postDataTask(with: url,data:imageData)
 }.then { result -> Void in
     //handle result
@@ -246,4 +247,10 @@ firstly {
 }
 ```
 
+
+一些资源:
+
+[java的promise库](http://jdeferred.org/)
+[OC/Swift的promise库](https://github.com/mxcl/PromiseKit)
+[JavaScript内置了语言级别的promise](http://liubin.org/promises-book/#chapter1-what-is-promise)
 
